@@ -26,7 +26,7 @@ jobs:
       - name: Run Build
         run: |
           chmod +x ./build.sh 
-          ./build.sh --platform Android --project-name ${appName}
+          ./build.sh --platform Android --project-name ${appname}
         
       # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
