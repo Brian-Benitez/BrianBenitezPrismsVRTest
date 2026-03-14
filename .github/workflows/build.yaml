@@ -20,7 +20,7 @@ jobs:
       - name: Run Build
         run: |
           chmod +x ./build.sh 
-          appName="Test App"
+          appName="TestApp"
           ./build.sh --platform Android --project-name ${appName}
         
       # Issue below was because of a " not being closed.
