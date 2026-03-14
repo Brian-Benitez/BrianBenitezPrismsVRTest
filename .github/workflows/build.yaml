@@ -18,7 +18,7 @@ jobs:
         # needed Perms to make this work
       # CLI call to simulated build process
       - name: Run Build
-        run: 
+        run: |
           chmod +x ./build.sh 
           appName="Test App"
           ./build.sh --project-name ${appName}
