@@ -3,11 +3,15 @@ name: Run Build
 on:
   workflow_dispatch:
     inputs:
+      skip_cdn_upload:
+        description: 'Upload to CDN?'
+        type: boolean
+        default: false
       appName:
         description: 'Custom App Name'
         required: true
         default: 'AppName'
-  
+      
 
 jobs:
   build:
