@@ -27,5 +27,5 @@ jobs:
       # CLI call to simulated upload process
       - name: Upload
         run: |
-          chmod +x ./cli/upload.sh ./cli/build/android
+          chmod +x ./upload.sh
           
