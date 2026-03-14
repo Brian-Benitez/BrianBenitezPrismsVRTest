@@ -2,9 +2,12 @@ name: Run Build
 
 on:
   workflow_dispatch:
-
-env:
-  APP_CUSTOM_NAME: "Engineering Team Custom Name here." # Define the custom name here
+    inputs:
+      appname:
+        description: 'Custom App Name'
+        required: true
+        default: 'AppName'
+  
 
 jobs:
   build:
