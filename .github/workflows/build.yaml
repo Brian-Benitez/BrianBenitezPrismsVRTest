@@ -3,6 +3,9 @@ name: Run Build
 on:
   workflow_dispatch:
 
+env:
+  APP_CUSTOM_NAME: "Engineering Team Custom Name here." # Define the custom name here
+
 jobs:
   build:
     runs-on: ubuntu-latest
