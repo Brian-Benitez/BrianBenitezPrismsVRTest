@@ -3,7 +3,7 @@ name: Run Build
 on:
   workflow_dispatch:
     inputs:
-      appname:
+      appName:
         description: 'Custom App Name'
         required: true
         default: 'AppName'
@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Set Custom Name To Build
+        run: echo "APP_NAME=${{ github.event.inputs.appName}}" >> $GITHUB_ENV
 
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
@@ -26,7 +28,7 @@ jobs:
       - name: Run Build
         run: |
           chmod +x ./build.sh 
-          ./build.sh --platform Android --project-name ${appname}
+          ./build.sh --platform Android --project-name ${APP_NAME}
         
       # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
