@@ -13,14 +13,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        
+
+        # Issue here was spaces between appName and "Test App" And removing $ in appName
       # CLI call to simulated build process
       - name: Run Build
         run: |
-          appName = "Test App"
-          ./build.sh --platform android --project-name ${$appName}
-
+          appName="Test App"
+          ./build.sh --platform android --project-name ${appName}
+        
+      # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
       - name: Upload
         run: |
-          ./upload.sh build/android"
+          ./upload.sh build/android
