@@ -59,7 +59,7 @@ jobs:
           xcodebuild build \
             -scheme "$APP_NAME" \
             -sdk iphonesimulator
-            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            -destination "platform=iOS Simulator,name=iPhone 15, OS=latest" \
             CODE_SIGNING_ALLOWED=NO
             CODE_SIGNING_REQUIRED=NO
         
