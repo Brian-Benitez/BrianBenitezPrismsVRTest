@@ -35,7 +35,7 @@ jobs:
             # The name of the dev branch
             dev-branch: # default is dev
     # The paths to be used to calculate changes (comma-separated)
-            log-paths:            
+            log-paths: ./    
           
      
      
