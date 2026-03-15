@@ -19,7 +19,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOs-latest]
     defaults:
       run:
         working-directory: ./cli
