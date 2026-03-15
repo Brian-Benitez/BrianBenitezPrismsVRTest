@@ -38,6 +38,12 @@ jobs:
         run: echo "Uploading to CDN..."
       - name: Check on OS
         run: echo "This job is running on ${{ runner.os}}"
+      - name: Creating Version Number
+        run: echo "Getting version number"
+      - uses: paulhatch/semantic-version@latest
+        with:
+            bump_each_commit: true
+            bump_each_commit_patch_pattern: "(PATCH)"
           
      
      
