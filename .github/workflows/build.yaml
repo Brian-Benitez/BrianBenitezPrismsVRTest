@@ -25,10 +25,12 @@ jobs:
         uses: actions/checkout@v2
       - name: Set Custom Name To Build
         run: echo "APP_NAME=${{ github.event.inputs.appName}}" >> $GITHUB_ENV
-      - name: Version Of App
-        id: build_version
-        run: echo "APP_VERSION=$(node -p "require('.package.json').version")" >> $GITHUB_ENV
-
+      - name: Gen Versioning Data
+        id: versioning
+        uses: Soumeh/Auto-Versioning@main
+      - name: Show Version Number
+        run: echo "${{steps.versioning.outputs.tag}}
+     
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
       # CLI call to simulated build process
