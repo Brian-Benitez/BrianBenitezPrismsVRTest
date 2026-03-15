@@ -34,6 +34,7 @@ jobs:
             fetch-depth: 0
             
       - name: Install CocoaPods
+        if: matrix.os == 'macos-latest'
         run: pod install
             
       - name: Set Custom Name To Build
