@@ -33,10 +33,6 @@ jobs:
         with:
             fetch-depth: 0
             
-      - name: Install CocoaPods
-        if: matrix.os == 'macos-latest'
-        run: pod install
-            
       - name: Set Custom Name To Build
         run: echo "APP_NAME=${{ github.event.inputs.appName || 'App-Name' }}" >> $GITHUB_ENV
         
@@ -46,17 +42,16 @@ jobs:
         
       - name: Check on OS
         run: echo "This job is running on ${{ runner.os}}"
-
-      - name: Run xcodebuild action
+        
+         # 1. Install the tool that creates the .xcodeproj
+      - name: Install XcodeGen
         if: matrix.os == 'macos-latest'
-        uses: sersoft-gmbh/xcodebuild-action@v4
-        with:
-          workspace: "${{ env.APP_NAME }}.xcworkspace"
-          scheme: "${{ env.APP_NAME }}"
-          # Target the phone simulator, not the Mac desktop
-          destination: 'platform=iOS Simulator,name=iPhone 15'
-          action: 'build'
-          settings: 'CODE_SIGNING_ALLOWED=NO'
+        run: brew install xcodegen
+
+      # 2. Generate the .xcodeproj file on the fly
+      - name: Generate Xcode Project
+        if: matrix.os == 'macos-latest'
+        run: xcodegen generate
 
       - name: Build for IOS Simulator(macos only)
         if: matrix.os == 'macos-latest'
