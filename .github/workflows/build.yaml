@@ -53,5 +53,5 @@ jobs:
       # CLI call to simulated upload process
       - name: Upload
         run: |
-          chmod +x ./upload.sh./upload.sh
+          chmod +x ./upload.sh
 
