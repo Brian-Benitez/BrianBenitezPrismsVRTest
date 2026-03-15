@@ -52,4 +52,17 @@ jobs:
       - name: Upload
         run: |
           chmod +x ./upload.sh
+
+
+  build-macos:
+      runs-on: macos-latest
+      steps:
+      - name: Run IOS build
+        run: | 
+             chmod +x ./build.sh 
+              ./build.sh --platform macos --project-name ${APP_NAME}
+
+      - name: Upload macos
+        run: |
+          chmod +x ./upload.sh
           
