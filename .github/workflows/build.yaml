@@ -47,13 +47,11 @@ jobs:
         if: matrix.os == 'macos-latest'
         uses: sersoft-gmbh/xcodebuild-action@v4
         with:
-          # Use your actual workspace name
-          workspace: 'MyApp.xcworkspace' 
-          scheme: 'MyApp'
+          workspace: '$APP_NAME.xcodeproj' 
+          scheme: '$APP_NAME'
           # Target the phone simulator, not the Mac desktop
           destination: 'platform=iOS Simulator,name=iPhone 15'
-          action: 'test'
-          # This replaces the "CODE_SIGNING_ALLOWED=NO" flag
+          action: 'build'
           settings: 'CODE_SIGNING_ALLOWED=NO'
 
       - name: Build for IOS Simulator(macos only)
