@@ -47,7 +47,7 @@ jobs:
         if: matrix.os == 'macos-latest'
         uses: sersoft-gmbh/xcodebuild-action@v4
         with:
-          workspace: "${{ env.APP_NAME }}.xcodeproj"
+          workspace: "${{ env.APP_NAME }}.xcworkspace"
           scheme: "${{ env.APP_NAME }}"
           # Target the phone simulator, not the Mac desktop
           destination: 'platform=iOS Simulator,name=iPhone 15'
