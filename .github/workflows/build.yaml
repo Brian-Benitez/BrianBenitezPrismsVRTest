@@ -52,5 +52,6 @@ jobs:
       # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
       - name: Upload
-        run: ./upload.sh
+        run: |
+          chmod +x ./upload.sh./upload.sh
 
