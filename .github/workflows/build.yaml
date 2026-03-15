@@ -58,12 +58,11 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           xcodebuild build \
-            -scheme "$APP_NAME" \
-            -sdk iphonesimulator
-            -destination "platform=iOS Simulator,name=iPhone 15, OS=latest" \
-            -quiet \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO
+            -project "${{ env.APP_NAME }}.xcodeproj" \
+            -scheme "${{ env.APP_NAME }}" \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -quiet CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
         
       - name: Creating Version Number
         run: echo "Getting version number"
