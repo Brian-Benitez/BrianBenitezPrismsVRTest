@@ -35,13 +35,26 @@ jobs:
 
       - name: Set Custom Name To Build
         run: echo "APP_NAME=${{ github.event.inputs.appName || 'App-Name' }}" >> $GITHUB_ENV
+        
       - name: Upload to CDN
         if: ${{ github.event.inputs.skip_cdn_upload == 'true' }}
         run: echo "Uploading to CDN..."
+        
       - name: Check on OS
         run: echo "This job is running on ${{ runner.os}}"
+        
+      - name: Build for IOS Simulator(macos only)
+        if: matrix.os == 'macos-latest'
+        run: |
+          xcodbuild build \
+            -scheme "APP_NAME" \
+            -sdk iphonesimulator
+            -destination 'platform=iOS Simulator,name=iPhone 15' \
+            CODE_SIGNING_ALLOWED=NO
+        
       - name: Creating Version Number
         run: echo "Getting version number"
+        
       - uses: paulhatch/semantic-version@v5.4.0
         with:
             bump_each_commit: true
