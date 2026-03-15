@@ -1,6 +1,10 @@
 name: Run Build
 
 on:
+  push:
+    branches:
+      - main
+      - production
   workflow_dispatch:
     inputs:
       skip_cdn_upload:
@@ -36,6 +40,9 @@ jobs:
             dev-branch: # default is dev
     # The paths to be used to calculate changes (comma-separated)
             log-paths: ./    
+      - name: Upload to CDN
+        if: ${{ github.event.inputs.skip_cdn_upload == 'true' }}
+        run: echo "Uploading to CDN..."
           
      
      
