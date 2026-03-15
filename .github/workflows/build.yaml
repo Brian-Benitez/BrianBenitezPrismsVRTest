@@ -44,7 +44,7 @@ jobs:
         with:
             bump_each_commit: true
             bump_each_commit_patch_pattern: "(PATCH)"
-          
+          #testing if version works.
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
       # CLI call to simulated build process
