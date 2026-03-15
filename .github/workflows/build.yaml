@@ -31,7 +31,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Set Custom Name To Build
-        run: echo "APP_NAME=${{ github.event.inputs.appName}}" >> $GITHUB_ENV
+        run: echo "APP_NAME=${{ github.event.inputs.appName || 'App-Name' }}" >> $GITHUB_ENV
         #old versioning was only for linix, need to find another way
       - name: Upload to CDN
         if: ${{ github.event.inputs.skip_cdn_upload == 'true' }}
