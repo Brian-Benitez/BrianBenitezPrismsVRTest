@@ -1,6 +1,6 @@
-name: Project
+name: ${APP_NAME}
 targets:
-  YourAppName:
+  ${APP_NAME}:
     type: application
     platform: iOS
     deploymentTarget: "17.0"
