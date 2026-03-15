@@ -36,6 +36,8 @@ jobs:
       - name: Upload to CDN
         if: ${{ github.event.inputs.skip_cdn_upload == 'true' }}
         run: echo "Uploading to CDN..."
+      - name: Check on OS
+        run: echo "This job is running on ${{ runner.os}}"
           
      
      
