@@ -40,7 +40,7 @@ jobs:
         run: echo "This job is running on ${{ runner.os}}"
       - name: Creating Version Number
         run: echo "Getting version number"
-      - uses: paulhatch/semantic-version@latest
+      - uses: paulhatch/semantic-version@v5.4.0
         with:
             bump_each_commit: true
             bump_each_commit_patch_pattern: "(PATCH)"
