@@ -61,7 +61,7 @@ jobs:
             -project "${{ env.APP_NAME }}.xcodeproj" \
             -scheme "${{ env.APP_NAME }}" \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
+            -destination "platform=iOS Simulator,name=iPad (10th generation),OS=18.5" \
             -quiet CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
         
       - name: Creating Version Number
