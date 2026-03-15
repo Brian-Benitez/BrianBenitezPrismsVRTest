@@ -31,7 +31,7 @@ jobs:
         uses: codacy/git-version@2.4.0
         with:
             # The name of the release branch
-            release-branch: Main # default is master
+            release-branch: main # default is master
             # The name of the dev branch
             dev-branch: # default is dev
     # The paths to be used to calculate changes (comma-separated)
