@@ -1,0 +1,8 @@
+name: Project
+targets:
+  YourAppName:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: .
