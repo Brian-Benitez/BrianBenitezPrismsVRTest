@@ -51,7 +51,7 @@ jobs:
       # 2. Generate the .xcodeproj file on the fly
       - name: Generate Xcode Project
         if: matrix.os == 'macos-latest'
-        run: xcodegen generate --spec BrianBenitezPrismsVRTest
+        run: xcodegen generate --spec ./project.yml
 
       - name: Build for IOS Simulator(macos only)
         if: matrix.os == 'macos-latest'
