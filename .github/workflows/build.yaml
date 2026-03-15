@@ -25,11 +25,19 @@ jobs:
         uses: actions/checkout@v2
       - name: Set Custom Name To Build
         run: echo "APP_NAME=${{ github.event.inputs.appName}}" >> $GITHUB_ENV
-      - name: Gen Versioning Data
-        id: versioning
-        uses: Soumeh/Auto-Versioning@main
-      - name: Show Version Number
-        run: echo "${{steps.versioning.outputs.tag}}
+      - name: Git Version
+            # You may pin to the exact commit or the version.
+            # uses: codacy/git-version@fa06788276d7492a2af01662649696d249ecf4cb
+        uses: codacy/git-version@2.4.0
+        with:
+            # The name of the release branch
+            release-branch: Main # default is master
+            # The name of the dev branch
+            dev-branch: # default is dev
+    # The paths to be used to calculate changes (comma-separated)
+            log-paths:            
+          
+     
      
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
