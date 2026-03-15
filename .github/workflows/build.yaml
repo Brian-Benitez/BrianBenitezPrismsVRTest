@@ -45,8 +45,6 @@ jobs:
       - uses: paulhatch/semantic-version@v5.4.0
         with:
             bump_each_commit: true
-            bump_each_commit_patch_pattern: "(PATCH)"
-
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
       # CLI call to simulated build process
