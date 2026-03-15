@@ -45,7 +45,7 @@ jobs:
       - name: Run Build
         run: |
           chmod +x ./build.sh 
-          ./build.sh --platform <macos> --project-name ${APP_NAME}
+          ./build.sh --platform <Android> --project-name ${APP_NAME}
         
       # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
