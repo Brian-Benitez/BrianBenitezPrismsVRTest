@@ -33,6 +33,9 @@ jobs:
         with:
             fetch-depth: 0
             
+      - name: Install CocoaPods
+        run: pod install
+            
       - name: Set Custom Name To Build
         run: echo "APP_NAME=${{ github.event.inputs.appName || 'App-Name' }}" >> $GITHUB_ENV
         
