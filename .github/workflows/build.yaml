@@ -44,6 +44,7 @@ jobs:
         run: echo "This job is running on ${{ runner.os}}"
 
       - name: Run xcodebuild action
+        if: matrix.os == 'macos-latest'
         uses: sersoft-gmbh/xcodebuild-action@v4
         with:
           # Use your actual workspace name
