@@ -24,11 +24,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run ShellCheck
-        uses: shellcheck-action/shellcheck-action@v2
+        uses: ludeeus/action-shellcheck@master
         with:
-          # Tell it which scripts to check in your /cli folder
-          path: 'cli/build.sh'
-          severity: warning # Fail on errors and warnings
+          scandir: './cli'
+          severity: warning
           
   build:
     runs-on: ${{matrix.os}}
