@@ -82,6 +82,11 @@ jobs:
         run: |
           chmod +x ./upload.sh
 
+      - name: Profile Build Script
+        run: |
+          export PS4='+ $(date "+%s.%N") '
+          bash -x ./build.sh > profile.log 2>&1
+
       - name: Performance Report
         if: always()
         run: |
