@@ -77,7 +77,8 @@ jobs:
           bash -x ./build.sh --platform Android --project-name "${APP_NAME}" > script_profile.log 2>&1
           
           echo "Running Profiled Upload..."
-          bash -x ./upload.sh >> script_profile.log 2>&1
+          # If this fails, we 'cat' the log so you can see the error in GitHub
+          bash -x ./upload.sh >> script_profile.log 2>&1 || (echo "--- ERROR DETECTED IN LOG ---" && tail -n 20 script_profile.log && exit 1)
 
       - name: Upload Profile Log
         if: always()
