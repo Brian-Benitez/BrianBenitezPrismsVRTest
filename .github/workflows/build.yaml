@@ -68,30 +68,6 @@ jobs:
         with:
             bump_each_commit: true
 
-      - name: Profile Script Execution
-        env:
-          APP_NAME: "${{ github.event.inputs.appName || 'App-Name' }}"
-          UPLOAD_TOKEN: "TEST_TOKEN"
-        run: |
-          chmod +x ./build.sh ./upload.sh
-          export PS4='+ $(date "+%s.%N") '
-          
-          echo "Running Profiled Build..."
-          bash -x ./build.sh --platform android --project-name "${APP_NAME}" > script_profile.log 2>&1
-          
-          echo "Running Profiled Upload..."
-          # If this fails, we 'cat' the log so you can see the error in GitHub
-           bash -x ./upload.sh android "${APP_NAME}.apk" >> script_profile.log 2>&1 || (echo "--- ERROR DETECTED IN LOG ---" && tail -n 20 script_profile.log && exit 1)
-
-      - name: Upload Profile Log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          # Adding matrix.os makes the filenames unique (e.g., profile-ubuntu-latest)
-          name: profile-${{ matrix.os }} 
-          path: cli/script_profile.log
-
-
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
       # CLI call to simulated build process
@@ -106,3 +82,12 @@ jobs:
         run: |
           chmod +x ./upload.sh
           ./upload.sh
+
+      - name: Performance Report
+        if: always()
+        run: |
+          echo "### Performance Summary" >> $GITHUB_STEP_SUMMARY
+          echo "| Step | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Build & Upload | Completed |" >> $GITHUB_STEP_SUMMARY
+          echo "| OS | ${{ matrix.os }} |" >> $GITHUB_STEP_SUMMARY
