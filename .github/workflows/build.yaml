@@ -23,6 +23,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
+    fail-fast: false
     defaults:
       run:
         working-directory: ./cli
