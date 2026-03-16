@@ -28,6 +28,9 @@ jobs:
         working-directory: ./cli
 
     steps:
+      - name: Debug Workspace
+        run: ls -R 
+
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
