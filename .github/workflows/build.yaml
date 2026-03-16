@@ -93,6 +93,7 @@ jobs:
       - name: Upload
         run: |
           chmod +x ./upload.sh
+          ./upload.sh --platform Android --project-name ${APP_NAME}
 
       - name: Profile Build Script
         run: |
