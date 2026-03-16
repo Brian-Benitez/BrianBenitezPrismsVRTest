@@ -94,3 +94,6 @@ jobs:
           echo "- **Network:** Check if \`upload.sh\` latency is high." >> $GITHUB_STEP_SUMMARY
           echo "- **Disk I/O:** Large artifacts can slow down the \`upload-artifact\` step." >> $GITHUB_STEP_SUMMARY
           echo "- **Cold Start:** macOS runners typically take 1-2 minutes longer to provision than Linux." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> [!TIP]" >> $GITHUB_STEP_SUMMARY
+          echo "> Compare the **Profiling Logs** in artifacts to see which specific line in your script is stalling." >> $GITHUB_STEP_SUMMARY
