@@ -67,6 +67,20 @@ jobs:
       - uses: paulhatch/semantic-version@v5.4.0
         with:
             bump_each_commit: true
+
+      - name: Profile Script Execution
+        run: |
+        # Enable XTRACE and use a custom PS4 to add high-precision timestamps
+          export PS4='+ $(date "+%s.%N") '
+          bash -x ./my_script.sh > script_profile.log 2>&1
+
+      - name: Upload Profile Log
+        uses: actions/upload-artifact@v4
+        with:
+          name: shell-profile
+          path: script_profile.log
+
+
         # Issue here was spaces between appName and "Test App" And removing $ in appName
         # needed Perms to make this work
       # CLI call to simulated build process
@@ -81,15 +95,4 @@ jobs:
         run: |
           chmod +x ./upload.sh
 
-      - name: Profile Script Execution
-        run: |
-        # Enable XTRACE and use a custom PS4 to add high-precision timestamps
-          export PS4='+ $(date "+%s.%N") '
-          bash -x ./my_script.sh > script_profile.log 2>&1
-
-      - name: Upload Profile Log
-        uses: actions/upload-artifact@v4
-        with:
-          name: shell-profile
-          path: script_profile.log
-
+      
