@@ -70,9 +70,11 @@ jobs:
 
       - name: Profile Script Execution
         run: |
-          # Enable XTRACE and use a custom PS4 to add high-precision timestamps
+          chmod +x ./build.sh
+          
           export PS4='+ $(date "+%s.%N") '
-          bash -x chmod +x ./build.sh > script_profile.log 2>&1
+          
+          bash -x ./build.sh > script_profile.log 2>&1
 
       - name: Upload Profile Log
         if: always() # Recommended so it uploads even if the script fails
