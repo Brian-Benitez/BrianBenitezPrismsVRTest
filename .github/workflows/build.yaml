@@ -28,9 +28,6 @@ jobs:
         working-directory: ./cli
 
     steps:
-      - name: Debug Workspace
-        run: ls -R 
-
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
@@ -73,11 +70,12 @@ jobs:
 
       - name: Profile Script Execution
         run: |
-        # Enable XTRACE and use a custom PS4 to add high-precision timestamps
+          # Enable XTRACE and use a custom PS4 to add high-precision timestamps
           export PS4='+ $(date "+%s.%N") '
-          bash -x ./my_script.sh > script_profile.log 2>&1
+          bash -x ./build.sh > script_profile.log 2>&1
 
       - name: Upload Profile Log
+        if: always() # Recommended so it uploads even if the script fails
         uses: actions/upload-artifact@v4
         with:
           name: shell-profile
