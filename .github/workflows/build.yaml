@@ -21,9 +21,9 @@ jobs:
   build:
     runs-on: ${{matrix.os}}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest]
-    fail-fast: false
     defaults:
       run:
         working-directory: ./cli
