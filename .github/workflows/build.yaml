@@ -69,6 +69,9 @@ jobs:
             bump_each_commit: true
 
       - name: Profile Script Execution
+        env:
+          APP_NAME: "APP_NAME=${{ github.event.inputs.appName || 'App-Name' }}"
+          UPLOAD_TOKEN: "TEST_TOKEN"
         run: |
           chmod +x ./build.sh ./upload.sh
           export PS4='+ $(date "+%s.%N") '
