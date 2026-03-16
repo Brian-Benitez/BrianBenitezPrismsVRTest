@@ -1,1 +1,43 @@
-This file left intentionally blank as an example file for you to fill in with your notes
+My Notes:
+
+Step 3: 
+Issues with app name = "test app"(Fixed)
+Need perms to run upload.sh(Fixed)
+The name Android was lower cased. So need to uppper case it for it to work.(Fixed)
+I took off build/android in line 30 in build yaml.(don't worry)
+chmod +x is the command to run apps
+
+Step 4:
+Issue with naming app everywhere(Fixed)
+"APP_NAME=${{ github.event.inputs.appName || 'App-Name' }}" >> $GITHUB_ENV Works in case it automacally commits
+Theres no artifact when running?
+
+Step 5:
+Version third partys doesn't work right now.
+Semantic versionings seems best.
+Tried to add semantic with major and minor updates but does not respond.
+Made it so it increments every commit
+I dont know what CDN means, needing to check it (Content Delivery Network) - it can cost money or takes lots of time.
+Made it so when you manually test it, you can check a bool to see if you wanted to add it to the CDN or not
+
+Step 6:
+Trying to make profiler so enginneers can look into it more.
+Issue with making folder in github actions(Fixed)
+Adding simple ends notes when build is finished.
+
+Step 7:
+Made it so it makes two builds, one for mac and one for linux
+IOS builds does not work, need user names and passwords to access apple products
+Found that I can make a simulator of apple products instead, doing this.
+It does not run because it needs a file called "xcodeproj"(Fixed)
+Project now runs every iteraction of apple products(Fixed)
+
+Step 8:
+Added: Fail-fast so It can run the other build if one build crashes
+Adding shell check to make sure no grammer or basic issues happen from the start
+As of now its does not work, need to see if another third party can help better (Fixed)
+Added: Profile artifact to test to compare other issues just in case
+Added check os just in case theres some issues between builds
+
+
+
