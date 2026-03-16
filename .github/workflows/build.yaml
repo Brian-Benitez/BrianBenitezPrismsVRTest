@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run ShellCheck
-        uses: koalaman/shellcheck-action@v2
+        uses: shellcheck-action/shellcheck-action@v2
         with:
           # Tell it which scripts to check in your /cli folder
           path: 'cli/build.sh'
