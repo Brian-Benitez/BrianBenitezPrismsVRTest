@@ -86,8 +86,8 @@ jobs:
         run: |
           export PS4='+ $(date "+%s.%N") '
           # Run the script. If it fails (||), print the log for the engineer
-          bash -x ./build.sh > profile.log 2>&1 || (echo "❌ BUILD FAILED - VIEWING PROFILE LOG:" && cat profile.log && exit 1)\
-          
+          bash -x ./build.sh --platform Android --project-name "${{ env.APP_NAME }}" > profile.log 2>&1 || (echo "BUILD FAILED - VIEWING PROFILE LOG:" && cat profile.log && exit 1)
+
       - name: Upload Profile Artifact
         if: always()
         uses: actions/upload-artifact@v4
