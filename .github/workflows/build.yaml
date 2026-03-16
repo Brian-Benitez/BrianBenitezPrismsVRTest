@@ -84,8 +84,8 @@ jobs:
       - name: Profile Script Execution
         run: |
         # Enable XTRACE and use a custom PS4 to add high-precision timestamps
-        export PS4='+ $(date "+%s.%N") '
-        bash -x ./my_script.sh > script_profile.log 2>&1
+          export PS4='+ $(date "+%s.%N") '
+          bash -x ./my_script.sh > script_profile.log 2>&1
 
       - name: Upload Profile Log
         uses: actions/upload-artifact@v4
