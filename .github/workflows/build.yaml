@@ -70,18 +70,22 @@ jobs:
 
       - name: Profile Script Execution
         run: |
-          chmod +x ./build.sh
-          
+          chmod +x ./build.sh ./upload.sh
           export PS4='+ $(date "+%s.%N") '
           
-          bash -x ./build.sh > script_profile.log 2>&1
+          echo "Running Profiled Build..."
+          bash -x ./build.sh --platform Android --project-name "${APP_NAME}" > script_profile.log 2>&1
+          
+          echo "Running Profiled Upload..."
+          bash -x ./upload.sh >> script_profile.log 2>&1
 
       - name: Upload Profile Log
-        if: always() # Recommended so it uploads even if the script fails
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: shell-profile
-          path: script_profile.log
+          # Adding matrix.os makes the filenames unique (e.g., profile-ubuntu-latest)
+          name: profile-${{ matrix.os }} 
+          path: cli/script_profile.log
 
 
         # Issue here was spaces between appName and "Test App" And removing $ in appName
