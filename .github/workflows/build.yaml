@@ -43,12 +43,10 @@ jobs:
       - name: Check on OS
         run: echo "This job is running on ${{ runner.os}}"
         
-         # 1. Install the tool that creates the .xcodeproj
       - name: Install XcodeGen
         if: matrix.os == 'macos-latest'
         run: brew install xcodegen
 
-      # 2. Generate the .xcodeproj file on the fly
       - name: Generate Xcode Project
         if: matrix.os == 'macos-latest'
         run: xcodegen generate --spec ./project.yml
@@ -65,8 +63,7 @@ jobs:
             -quiet CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
         
       - name: Creating Version Number
-        run: echo "Getting version number"
-        
+        run: echo "Getting version number"  
       - uses: paulhatch/semantic-version@v5.4.0
         with:
             bump_each_commit: true
@@ -83,4 +80,10 @@ jobs:
       - name: Upload
         run: |
           chmod +x ./upload.sh
+
+      - name: Generate Logs for Performance
+        uses: actions/upload-artifact@v4
+
+      - name: Publish Logs
+        uses: test-summary/action@v2
 
