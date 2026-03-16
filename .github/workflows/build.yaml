@@ -61,7 +61,7 @@ jobs:
 
       - name: Generate Xcode Project
         if: matrix.os == 'macos-latest'
-        run: xcodegen generate --spec ./project.yml
+        run: xcodegen generate --spec ./MyFolder
 
       - name: Build for IOS Simulator(macos only)
         working-directory: ./MyFolder
