@@ -90,12 +90,12 @@ jobs:
       # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
       - name: Upload
-        env:
-            Token: ${{ secrets.UPLOAD_TOKEN }}
         run: |
           chmod +x ./upload.sh
           ./upload.sh --project-name ${APP_NAME} 
           path: ../MyFolder/ArtifactFile.yml
+        env:
+            Token: ${{ secrets.UPLOAD_TOKEN }}
 
       - name: Profile Build Script
         run: |
