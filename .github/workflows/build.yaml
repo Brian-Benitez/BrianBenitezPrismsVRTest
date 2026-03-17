@@ -95,6 +95,8 @@ jobs:
           chmod +x ./upload.sh
           ./upload.sh --project-name ${APP_NAME} 
           path: ../MyFolder/ArticatFile.yml
+          env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Profile Build Script
         run: |
