@@ -92,7 +92,7 @@ jobs:
       - name: Upload
         run: |
           chmod +x ./upload.sh
-          ./upload.sh --project-name ${APP_NAME} 
+          ./upload.sh --platform Android --project-name ${APP_NAME} 
           path: ../MyFolder/ArtifactFile.yml
         env:
             UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
