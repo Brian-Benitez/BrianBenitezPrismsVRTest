@@ -95,7 +95,7 @@ jobs:
           ./upload.sh --project-name ${APP_NAME} 
           path: ../MyFolder/ArtifactFile.yml
         env:
-            Token: ${{ secrets.UPLOAD_TOKEN }}
+            UPLOAD_TOKEN: ${{ secrets.UPLOAD_TOKEN }}
 
       - name: Profile Build Script
         run: |
