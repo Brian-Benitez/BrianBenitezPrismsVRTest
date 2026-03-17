@@ -95,7 +95,7 @@ jobs:
         run: |
           chmod +x ./upload.sh
           ./upload.sh --project-name ${APP_NAME} 
-          path: ../MyFolder/ArticatFile.yml
+          path: ../MyFolder/ArtifactFile.yml
 
       - name: Profile Build Script
         run: |
