@@ -93,7 +93,8 @@ jobs:
       - name: Upload
         run: |
           chmod +x ./upload.sh
-          ./upload.sh --platform Android --project-name ${APP_NAME}
+          ./upload.sh --project-name ${APP_NAME} 
+          path: ../MyFolder/ArticatFile.yml
 
       - name: Profile Build Script
         run: |
