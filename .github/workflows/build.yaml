@@ -7,7 +7,7 @@ on:
       - production
   workflow_dispatch:
     inputs:
-      skip_cdn_upload:
+      Is_Uploading_To_Cdn:
         description: 'Upload to CDN?'
         type: boolean
         default: false
