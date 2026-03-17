@@ -90,9 +90,9 @@ jobs:
       # Issue below was because of a " not being closed.
       # CLI call to simulated upload process
       - name: Upload
-        run: |
-          env:
+        env:
             Token: ${{ secrets.UPLOAD_TOKEN }}
+        run: |
           chmod +x ./upload.sh
           ./upload.sh --project-name ${APP_NAME} 
           path: ../MyFolder/ArticatFile.yml
