@@ -16,7 +16,8 @@ on:
         required: true
         default: 'AppName'
       
-
+env:
+  Token: ${{ secrets.UPLOAD_TOKEN }}
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -95,8 +96,6 @@ jobs:
           chmod +x ./upload.sh
           ./upload.sh --project-name ${APP_NAME} 
           path: ../MyFolder/ArticatFile.yml
-          env:
-          GH_TOKEN: ${{ secrets.UPLOAD_SECRET }}
 
       - name: Profile Build Script
         run: |
