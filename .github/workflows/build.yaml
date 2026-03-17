@@ -16,8 +16,6 @@ on:
         required: true
         default: 'AppName'
       
-env:
-  Token: ${{ secrets.UPLOAD_TOKEN }}
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -93,6 +91,8 @@ jobs:
       # CLI call to simulated upload process
       - name: Upload
         run: |
+          env:
+            Token: ${{ secrets.UPLOAD_TOKEN }}
           chmod +x ./upload.sh
           ./upload.sh --project-name ${APP_NAME} 
           path: ../MyFolder/ArticatFile.yml
